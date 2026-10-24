@@ -107,7 +107,12 @@ int main(int argc, char * argv[])
         return 1;
     }
 
-    fclose(f);
+    if (fclose(f) != 0)
+    {
+        printf("Failed to close: %s\n", argv[2]);
+        free(buffer);
+        return 1;
+    }
 
     free(buffer);
 
